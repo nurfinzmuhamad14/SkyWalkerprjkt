@@ -299,7 +299,7 @@ static void remove_dmabuf_list(struct kgsl_dma_buf_meta *meta)
 #ifdef CONFIG_DMA_SHARED_BUFFER
 static void kgsl_destroy_ion(struct kgsl_dma_buf_meta *meta)
 {
-<<<<<<< HEAD
+ 
 =======
 	struct kgsl_mem_entry *entry = container_of(memdesc,
 				struct kgsl_mem_entry, memdesc);
@@ -308,7 +308,7 @@ static void kgsl_destroy_ion(struct kgsl_dma_buf_meta *meta)
 	if (memdesc->priv & KGSL_MEMDESC_MAPPED)
 		return;
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	if (meta != NULL) {
 		remove_dmabuf_list(meta);
 		dma_buf_unmap_attachment(meta->attach, meta->table,
@@ -322,7 +322,7 @@ static void kgsl_destroy_ion(struct kgsl_dma_buf_meta *meta)
 static void kgsl_destroy_ion(struct kgsl_dma_buf_meta *meta)
 {
 
-<<<<<<< HEAD
+ 
 =======
 	if (memdesc->priv & KGSL_MEMDESC_MAPPED)
 		return;
@@ -344,7 +344,7 @@ static void kgsl_destroy_ion(struct kgsl_dma_buf_meta *meta)
 			put_page(nth_page(page, j));
 		}
 	}
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 }
 #endif
 
@@ -2140,7 +2140,7 @@ done:
 	return result;
 }
 
-<<<<<<< HEAD
+ 
 =======
 long kgsl_ioctl_gpu_aux_command(struct kgsl_device_private *dev_priv,
 		unsigned int cmd, void *data)
@@ -2269,7 +2269,7 @@ err:
 	return ret;
 }
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 long kgsl_ioctl_cmdstream_readtimestamp_ctxtid(struct kgsl_device_private
 						*dev_priv, unsigned int cmd,
 						void *data)

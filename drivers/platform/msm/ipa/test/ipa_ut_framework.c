@@ -573,7 +573,7 @@ static void ipa_ut_dbgfs_test_write_work_func(struct work_struct *work)
 		tst_fail = true;
 	IPA_UT_DBG("*** Test %s - ***\n", tst_fail ? "FAIL" : "SUCCESS");
 	if (tst_fail) {
-		pr_info("=================>>>>>>>>>>>\n");
+		pr_info("================= //>>>>\n");
 		ipa_ut_print_log_buf(_IPA_UT_TEST_LOG_BUF_NAME);
 		pr_info("**** TEST %s FAILED ****\n", test->name);
 		ipa_ut_dump_fail_report_stack();

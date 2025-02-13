@@ -4448,7 +4448,7 @@ static int packet_set_ring(struct sock *sk, union tpacket_req_u *req_u,
 	}
 
 out_free_pg_vec:
-<<<<<<< HEAD
+ 
 	if (pg_vec)
 		bitmap_free(rx_owner_map);
 	free_pg_vec(pg_vec, order, req->tp_block_nr);
@@ -4457,7 +4457,7 @@ out_free_pg_vec:
 		bitmap_free(rx_owner_map);
 		free_pg_vec(pg_vec, order, req->tp_block_nr);
 	}
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 out:
 	return err;
 }

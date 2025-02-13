@@ -2712,10 +2712,10 @@ static int wacom_probe(struct hid_device *hdev,
 		wacom->usbdev = dev;
 		wacom->intf = intf;
 	}
-<<<<<<< HEAD
+ 
 =======
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	mutex_init(&wacom->lock);
 	INIT_DELAYED_WORK(&wacom->init_work, wacom_init_work);
 	INIT_WORK(&wacom->wireless_work, wacom_wireless_work);

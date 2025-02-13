@@ -821,7 +821,7 @@ static struct usb_function_instance *uvc_alloc_inst(void)
 	cd->wObjectiveFocalLengthMax	= cpu_to_le16(0);
 	cd->wOcularFocalLength		= cpu_to_le16(0);
 	cd->bControlSize		= 3;
-<<<<<<< HEAD
+ 
 	cd->bmControls[0]		= 2;
 	cd->bmControls[1]		= 0;
 	cd->bmControls[2]		= 0;
@@ -829,7 +829,7 @@ static struct usb_function_instance *uvc_alloc_inst(void)
 	cd->bmControls[0]		= 62;
 	cd->bmControls[1]		= 126;
 	cd->bmControls[2]		= 10;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 	pd = &opts->uvc_processing;
 	pd->bLength			= UVC_DT_PROCESSING_UNIT_SIZE(2);
@@ -838,7 +838,7 @@ static struct usb_function_instance *uvc_alloc_inst(void)
 	pd->bUnitID			= 2;
 	pd->bSourceID			= 1;
 	pd->wMaxMultiplier		= cpu_to_le16(16*1024);
-<<<<<<< HEAD
+ 
 	pd->bControlSize		= 2;
 	pd->bmControls[0]		= 1;
 	pd->bmControls[1]		= 0;
@@ -847,7 +847,7 @@ static struct usb_function_instance *uvc_alloc_inst(void)
 	pd->bmControls[0]		= 91;
 	pd->bmControls[1]		= 23;
 	pd->bmControls[2]		= 4;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	pd->iProcessing			= 0;
 
 	od = &opts->uvc_output_terminal;

@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
  * Copyright (c) 2016-2017, Linaro Ltd
-<<<<<<< HEAD
+ 
  * Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2018-2021, The Linux Foundation. All rights reserved.
  * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 #include <linux/idr.h>

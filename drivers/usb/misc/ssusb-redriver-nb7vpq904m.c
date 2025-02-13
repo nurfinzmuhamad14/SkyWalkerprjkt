@@ -216,13 +216,13 @@ static void ssusb_redriver_gen_dev_set(
 		struct ssusb_redriver *redriver, bool on)
 {
 	int ret;
-<<<<<<< HEAD
+ 
 	u8 val;
 
 =======
 	u8 val, oldval;
 	u8 aux_val = AUX_DISABLE_VAL;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	val = 0;
 
 	switch (redriver->op_mode) {
@@ -301,7 +301,7 @@ static void ssusb_redriver_gen_dev_set(
 		"successfully (%s) the redriver chip, reg 0x00 = 0x%x\n",
 		on ? "ENABLE":"DISABLE", val);
 
-<<<<<<< HEAD
+ 
 =======
 	redriver->gen_dev_val = val;
 
@@ -319,7 +319,7 @@ static void ssusb_redriver_gen_dev_set(
 		on ? "ENABLE":"DISABLE", aux_val);
 	}
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	return;
 
 err_exit:

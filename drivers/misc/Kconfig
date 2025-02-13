@@ -622,7 +622,7 @@ config QTI_MAXIM_FAN_CONTROLLER
 	  Also, this driver initializes the power for the fan controller
 	  and exposes sysfs node to control different speeds of fan.
 
-<<<<<<< HEAD
+ 
 
 #ifdef OPLUS_FEATURE_TP_BASIC
 config SIM_DETECT
@@ -658,7 +658,7 @@ config KINECTICS_XR_NORDIC
 	  code to power up the Nordic chip and initializes SPI interface. Also,
 	  this also parses the gpios and interrupts from device tree and sets
 	  the gpios and interrupt handler for handling the interrupt.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"

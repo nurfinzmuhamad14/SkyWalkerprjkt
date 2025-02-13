@@ -3920,7 +3920,7 @@ static void p922x_idt_connect_int_func(struct work_struct *work)
 	chg_err("<~WPC~> action for 11111\n");
 
 	if (p922x_get_idt_con_val() == 1) {
-		chg_err(" !!!!! <~WPC~>[-TEST-] wpc dock has connected!>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+		chg_err(" !!!!! <~WPC~>[-TEST-] wpc dock has connected! // // // //\n");
 		if (p922x_chip->p922x_chg_status.charge_online == false) {
 			p922x_chip->p922x_chg_status.charge_online = true;
 			chip->wireless_mode = WIRELESS_MODE_RX;

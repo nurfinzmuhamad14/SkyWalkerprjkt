@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
-<<<<<<< HEAD
+ 
  * Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2016-2021, The Linux Foundation. All rights reserved.
  * Copyright (c) 2022-2024, Qualcomm Innovation Center, Inc. All rights reserved.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 /*
@@ -46,7 +46,7 @@ static void free_fence_names(struct kgsl_drawobj_sync *syncobj)
 	for (i = 0; i < syncobj->numsyncs; i++) {
 		struct kgsl_drawobj_sync_event *event = &syncobj->synclist[i];
 
-<<<<<<< HEAD
+ 
 		if (event->type == KGSL_CMD_SYNCPOINT_TYPE_FENCE)
 			kfree(event->info.fences);
 =======
@@ -60,7 +60,7 @@ static void free_fence_names(struct kgsl_drawobj_sync *syncobj)
 		} else if (event->type == KGSL_CMD_SYNCPOINT_TYPE_TIMELINE) {
 			kfree(event->priv);
 		}
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	}
 }
 
@@ -117,11 +117,11 @@ void kgsl_dump_syncpoints(struct kgsl_device *device,
 		}
 		case KGSL_CMD_SYNCPOINT_TYPE_FENCE: {
 			int j;
-<<<<<<< HEAD
+ 
 			struct event_fence_info *info = &event->info;
 =======
 			struct event_fence_info *info = event->priv;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 			for (j = 0; j < info->num_fences; j++)
 				dev_err(device->dev, "[%d]  fence: %s\n",
@@ -178,11 +178,11 @@ static void syncobj_timer(struct timer_list *t)
 			break;
 		case KGSL_CMD_SYNCPOINT_TYPE_FENCE: {
 			int j;
-<<<<<<< HEAD
+ 
 			struct event_fence_info *info = &event->info;
 =======
 			struct event_fence_info *info = event->priv;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 			for (j = 0; j < info->num_fences; j++)
 				dev_err(device->dev, "       [%u] FENCE %s\n",
@@ -273,7 +273,7 @@ static void drawobj_destroy_sparse(struct kgsl_drawobj *drawobj)
 	}
 }
 
-<<<<<<< HEAD
+ 
 static void drawobj_destroy_sync(struct kgsl_drawobj *drawobj)
 =======
 static void drawobj_sync_timeline_fence_work(struct work_struct *work)
@@ -300,7 +300,7 @@ static void drawobj_sync_timeline_fence_callback(struct dma_fence *f,
 }
 
 static void syncobj_destroy(struct kgsl_drawobj *drawobj)
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 {
 	struct kgsl_drawobj_sync *syncobj = SYNCOBJ(drawobj);
 	unsigned int i;
@@ -402,10 +402,10 @@ EXPORT_SYMBOL(kgsl_drawobj_destroy);
 static bool drawobj_sync_fence_func(void *priv)
 {
 	struct kgsl_drawobj_sync_event *event = priv;
-<<<<<<< HEAD
+ 
 =======
 	struct event_fence_info *info = event->priv;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	int i;
 
 	for (i = 0; i < event->info.num_fences; i++)
@@ -423,7 +423,7 @@ static bool drawobj_sync_fence_func(void *priv)
 	return false;
 }
 
-<<<<<<< HEAD
+ 
 /* drawobj_add_sync_fence() - Add a new sync fence syncpoint
  * @device: KGSL device
  * @syncobj: KGSL sync obj to add the sync point to
@@ -528,7 +528,7 @@ static int drawobj_add_sync_timeline(struct kgsl_device *device,
 	return 0;
 }
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 static int drawobj_add_sync_fence(struct kgsl_device *device,
 		struct kgsl_drawobj_sync *syncobj, void *priv)
 {
@@ -537,12 +537,12 @@ static int drawobj_add_sync_fence(struct kgsl_device *device,
 	struct kgsl_drawobj_sync_event *event;
 	unsigned int id, i;
 
-<<<<<<< HEAD
+ 
 =======
 	if (copy_struct_from_user(&sync, sizeof(sync), data, datasize))
 		return -EFAULT;
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	kref_get(&drawobj->refcount);
 
 	id = syncobj->numsyncs++;
@@ -659,7 +659,7 @@ done:
 	return ret;
 }
 
-<<<<<<< HEAD
+ 
 =======
 static int drawobj_add_sync_timestamp_from_user(struct kgsl_device *device,
 		struct kgsl_drawobj_sync *syncobj, void __user *data,
@@ -674,7 +674,7 @@ static int drawobj_add_sync_timestamp_from_user(struct kgsl_device *device,
 	return drawobj_add_sync_timestamp(device, syncobj, &timestamp);
 }
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 /**
  * kgsl_drawobj_sync_add_sync() - Add a sync point to a command
  * batch
@@ -878,7 +878,7 @@ static void *_drawobj_create(struct kgsl_device *device,
 	drawobj->context = context;
 	drawobj->type = type;
 
-<<<<<<< HEAD
+ 
 	return obj;
 =======
 	return 0;
@@ -967,7 +967,7 @@ err:
 	kvfree(timelineobj->timelines);
 	timelineobj->timelines = NULL;
 	return ret;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 }
 
 /**

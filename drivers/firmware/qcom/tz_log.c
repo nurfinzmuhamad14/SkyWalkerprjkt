@@ -1135,7 +1135,7 @@ static ssize_t tzdbgfs_read_unencrypted(struct file *file, char __user *buf,
 	size_t count, loff_t *offp)
 {
 	int len = 0;
-<<<<<<< HEAD
+ 
 //#ifdef OPLUS_FEATURE_SECURITY_COMMON
 	struct seq_file *seq = file->private_data;
 	int *tz_id = (int *)(seq->private);
@@ -1144,7 +1144,7 @@ static ssize_t tzdbgfs_read_unencrypted(struct file *file, char __user *buf,
 //#endif
 =======
 	int tz_id = *(int *)(file->private_data);
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+//# 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 	if (tz_id == TZDBG_BOOT || tz_id == TZDBG_RESET ||
 		tz_id == TZDBG_INTERRUPT || tz_id == TZDBG_GENERAL ||
@@ -1732,7 +1732,7 @@ static int tz_log_probe(struct platform_device *pdev)
 		return -ENOMEM;
 	tzdbg.diag_buf = (struct tzdbg_t *)ptr;
 
-<<<<<<< HEAD
+ 
 //#ifdef OPLUS_FEATURE_SECURITY_COMMON
 	if (tzdbg_procfs_init(pdev))
 //else
@@ -1774,7 +1774,7 @@ static int tz_log_probe(struct platform_device *pdev)
 
 	if (tzdbgfs_init(pdev))
 		goto exit_free_disp_buf;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	return 0;
 
 exit_free_disp_buf:
@@ -1791,7 +1791,7 @@ exit_free_diag_buf:
 
 static int tz_log_remove(struct platform_device *pdev)
 {
-<<<<<<< HEAD
+ 
 	kzfree(tzdbg.diag_buf);
 	kzfree(tzdbg.hyp_diag_buf);
 	//#ifdef OPLUS_FEATURE_SECURITY_COMMON
@@ -1808,7 +1808,7 @@ static int tz_log_remove(struct platform_device *pdev)
 	tzdbg_free_qsee_log_buf(pdev);
 	if (!tzdbg.is_encrypted_log_enabled)
 		kfree(tzdbg.diag_buf);
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	return 0;
 }
 

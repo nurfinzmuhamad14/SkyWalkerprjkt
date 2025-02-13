@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
-<<<<<<< HEAD
+ 
  * Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2016-2021, The Linux Foundation. All rights reserved.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 #include <linux/dma-contiguous.h>
@@ -482,12 +482,12 @@ static void fast_smmu_unmap_sg(struct device *dev,
 			break;
 		sg = tmp;
 	}
-<<<<<<< HEAD
+ 
 	len = sg_dma_address(sg) + sg_dma_len(sg) - start;
 =======
 	len = ALIGN(sg_dma_address(sg) + sg_dma_len(sg) - (start - offset),
 		    FAST_PAGE_SIZE);
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 	av8l_fast_unmap_public(mapping->pgtbl_ops, start, len);
 

@@ -338,7 +338,7 @@ static int setup_v1_file_key_derived(struct fscrypt_info *ci,
 		for (i = 0; i < ARRAY_SIZE(key_new.words); i++)
 			__cpu_to_be32s(&key_new.words[i]);
 
-<<<<<<< HEAD
+ 
 		err = fscrypt_prepare_inline_crypt_key(&ci->ci_key,
 						       key_new.bytes,
 						       ci->ci_mode->keysize,
@@ -350,7 +350,7 @@ static int setup_v1_file_key_derived(struct fscrypt_info *ci,
 		if (derived_key)
 			kzfree(derived_key);
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 		return err;
 	}
 	/*

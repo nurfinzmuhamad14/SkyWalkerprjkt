@@ -237,7 +237,7 @@
 #define DIV2_CP_MASTER			0
 #define DIV2_CP_SLAVE			1
 #define COMBO_PRE_REGULATOR		2
-<<<<<<< HEAD
+ 
 =======
 #define SMB1394_DIV2_CP_PRY		3
 #define SMB1394_DIV2_CP_SECY		4
@@ -245,7 +245,7 @@
 
 #define IS_SMB1394(role) \
 	(role == SMB1394_DIV2_CP_PRY || role == SMB1394_DIV2_CP_SECY)
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 enum isns_mode {
 	ISNS_MODE_OFF = 0,

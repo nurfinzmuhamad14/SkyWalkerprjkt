@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
-<<<<<<< HEAD
+ 
  * Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2016-2021, The Linux Foundation. All rights reserved.
  * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 #include <linux/bitmap.h>
@@ -207,7 +207,7 @@ struct msm_geni_serial_port {
 	bool s_cmd;
 	struct completion m_cmd_timeout;
 	struct completion s_cmd_timeout;
-<<<<<<< HEAD
+ 
 =======
 	spinlock_t rx_lock;
 	bool bypass_flow_control;
@@ -218,7 +218,7 @@ struct msm_geni_serial_port {
 	struct workqueue_struct *wakeup_irq_wq;
 	struct delayed_work wakeup_irq_dwork;
 	struct completion wakeup_comp;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 };
 
 static const struct uart_ops msm_geni_serial_pops;
@@ -1498,7 +1498,7 @@ static void stop_rx_sequencer(struct uart_port *uport)
 		return;
 	}
 
-<<<<<<< HEAD
+ 
 	port->s_cmd_done = false;
 	port->s_cmd = true;
 	reinit_completion(&port->s_cmd_timeout);
@@ -1547,7 +1547,7 @@ static void stop_rx_sequencer(struct uart_port *uport)
 			}
 		}
 	}
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 	IPC_LOG_MSG(port->ipc_log_misc, "%s: Start 0x%x\n",
 		    __func__, geni_status);
@@ -1814,7 +1814,7 @@ exit_handle_tx:
 	return 0;
 }
 
-<<<<<<< HEAD
+ 
 =======
 /*
  * msm_geni_find_wakeup_byte() - Checks if wakeup byte is present
@@ -1874,7 +1874,7 @@ static void check_rx_buf(char *buf, struct uart_port *uport, int size)
 	}
 }
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 static int msm_geni_serial_handle_dma_rx(struct uart_port *uport, bool drop_rx)
 {
 	struct msm_geni_serial_port *msm_port = GET_DEV_PORT(uport);
@@ -1972,7 +1972,7 @@ static int msm_geni_serial_handle_dma_tx(struct uart_port *uport)
 	return 0;
 }
 
-<<<<<<< HEAD
+ 
 =======
 static bool handle_rx_dma_xfer(u32 s_irq_status, struct uart_port *uport)
 {
@@ -2051,7 +2051,7 @@ static bool handle_rx_dma_xfer(u32 s_irq_status, struct uart_port *uport)
 	return ret;
 }
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 static void msm_geni_serial_handle_isr(struct uart_port *uport,
 				       unsigned long *flags,
 				       bool is_irq_masked)
@@ -3646,7 +3646,7 @@ static int msm_geni_serial_remove(struct platform_device *pdev)
 
 	if (!uart_console(&port->uport))
 		wakeup_source_unregister(port->geni_wake);
-<<<<<<< HEAD
+ 
 =======
 		port->geni_wake = NULL;
 		flush_workqueue(port->qwork);
@@ -3654,7 +3654,7 @@ static int msm_geni_serial_remove(struct platform_device *pdev)
 	}
 	if (port->wakeup_irq > 0)
 		destroy_workqueue(port->wakeup_irq_wq);
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	uart_remove_one_port(drv, &port->uport);
 	if (port->rx_dma) {
 		geni_se_iommu_free_buf(port->wrapper_dev, &port->rx_dma,

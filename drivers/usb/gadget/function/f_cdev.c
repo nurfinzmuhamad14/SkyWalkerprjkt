@@ -1052,13 +1052,13 @@ static void usb_cser_start_io(struct f_cdev *port)
 
 	ret = usb_cser_alloc_requests(port->port_usb.out,
 				&port->read_pool,
-<<<<<<< HEAD
+ 
 				BRIDGE_RX_QUEUE_SIZE, BRIDGE_RX_BUF_SIZE,
 =======
 				port->rx_queue_size,
 				port->rx_buf_size,
 				0,
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 				usb_cser_read_complete);
 	if (ret) {
 		pr_err("unable to allocate out requests\n");

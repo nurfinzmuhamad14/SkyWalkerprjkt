@@ -142,7 +142,7 @@ static void dma_buf_release(struct dentry *dentry)
 		reservation_object_fini(dmabuf->resv);
 
 	module_put(dmabuf->owner);
-<<<<<<< HEAD
+ 
 	kfree(dmabuf->name);
 	kfree(dmabuf);
 =======
@@ -162,7 +162,7 @@ static int dma_buf_file_release(struct inode *inode, struct file *file)
 	list_del(&dmabuf->list_node);
 	mutex_unlock(&db_list.lock);
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	return 0;
 }
 

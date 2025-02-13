@@ -1,11 +1,11 @@
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
-<<<<<<< HEAD
+ 
  * Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2016-2019, 2021, The Linux Foundation. All rights reserved.
  * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 #ifndef __KGSL_DRAWOBJ_H
@@ -136,7 +136,7 @@ struct kgsl_drawobj_sync_event {
 	unsigned int timestamp;
 	struct kgsl_sync_fence_cb *handle;
 	struct kgsl_device *device;
-<<<<<<< HEAD
+ 
 	struct event_fence_info info;
 =======
 	/** @priv: Type specific private information */
@@ -150,7 +150,7 @@ struct kgsl_drawobj_sync_event {
 	struct dma_fence_cb cb;
 	/** @work : work_struct for KGSL_CMD_SYNCPOINT_TYPE_TIMELINE */
 	struct work_struct work;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 };
 
 /**

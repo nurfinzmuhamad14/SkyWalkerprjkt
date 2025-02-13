@@ -1750,23 +1750,23 @@ composite_setup(struct usb_gadget *gadget, const struct usb_ctrlrequest *ctrl)
 	u8				endp;
 
 	if (w_length > USB_COMP_EP0_BUFSIZ) {
-<<<<<<< HEAD
+ 
 		if (ctrl->bRequestType == USB_DIR_OUT) {
 			goto done;
 		} else {
 =======
 		if (ctrl->bRequestType & USB_DIR_IN) {
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 			/* Cast away the const, we are going to overwrite on purpose. */
 			__le16 *temp = (__le16 *)&ctrl->wLength;
 
 			*temp = cpu_to_le16(USB_COMP_EP0_BUFSIZ);
 			w_length = USB_COMP_EP0_BUFSIZ;
-<<<<<<< HEAD
+ 
 =======
 		} else {
 			goto done;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 		}
 	}
 
@@ -2310,11 +2310,11 @@ int composite_dev_prepare(struct usb_composite_driver *composite,
 	if (!cdev->req)
 		return -ENOMEM;
 
-<<<<<<< HEAD
+ 
 	cdev->req->buf = kmalloc(USB_COMP_EP0_BUFSIZ, GFP_KERNEL);
 =======
 	cdev->req->buf = kzalloc(USB_COMP_EP0_BUFSIZ, GFP_KERNEL);
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	if (!cdev->req->buf)
 		goto fail;
 

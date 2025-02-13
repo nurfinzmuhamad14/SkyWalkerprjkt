@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-only
-<<<<<<< HEAD
+ 
 /* Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.
 =======
 /* Copyright (c) 2015-2019, 2021, The Linux Foundation. All rights reserved.
  * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 #include <linux/slab.h>
 #include <linux/err.h>
@@ -183,13 +183,13 @@ static int diag_add_hdlc_encoding(unsigned char *dest_buf, int *dest_len,
 
 static int check_bufsize_for_encoding(struct diagfwd_buf_t *buf, uint32_t len)
 {
-<<<<<<< HEAD
+ 
 	int i, ctx = 0;
 	uint32_t max_size = 0;
 =======
 	int i, ctx = 0, flag_64k = 0;
 	uint32_t max_size = 0, realloc_len = 0;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	unsigned long flags;
 	unsigned char *temp_buf = NULL;
 	struct diag_md_info *ch = NULL;
@@ -244,11 +244,11 @@ static int check_bufsize_for_encoding(struct diagfwd_buf_t *buf, uint32_t len)
 				mutex_unlock(&driver->md_session_lock);
 				return -ENOMEM;
 			}
-<<<<<<< HEAD
+ 
 =======
 			buf->data = temp_buf;
 			buf->len = realloc_len;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 			DIAG_LOG(DIAG_DEBUG_PERIPHERALS,
 			"Reallocated data buffer: %pK with size: %d\n",
 			temp_buf, max_size);

@@ -1002,7 +1002,7 @@ int nfc_ioctl_power_states(struct file *filp, unsigned long arg)
 			msleep(10);
 			gpio_set_value(nqx_dev->en_gpio, 1);
 			msleep(10);
-			dev_err(&nqx_dev->client->dev,"%s VEN reset DONE >>>>>>>\n", __func__);
+			dev_err(&nqx_dev->client->dev,"%s VEN reset DONE  //\n", __func__);
 		}
 	}
 	#endif /* OPLUS_BUG_STABILITY */

@@ -571,7 +571,7 @@ static void iscsi_target_login_timeout(struct timer_list *t)
 	struct conn_timeout *timeout = from_timer(timeout, t, timer);
 	struct iscsi_conn *conn = timeout->conn;
 
-	pr_debug("Entering iscsi_target_login_timeout >>>>>>>>>>>>>>>>>>>\n");
+	pr_debug("Entering iscsi_target_login_timeout  // //>>>>>\n");
 
 	if (conn->login_kworker) {
 		pr_debug("Sending SIGINT to conn->login_kworker %s/%d\n",

@@ -1,10 +1,10 @@
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
-<<<<<<< HEAD
+ 
  * Copyright (c) 2017-2019, The Linux Foundation. All rights reserved.
 =======
  * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 #ifndef _QDSS_BRIDGE_H

@@ -7190,7 +7190,7 @@ ahc_dump_card_state(struct ahc_softc *ahc)
 
 	saved_scbptr = ahc_inb(ahc, SCBPTR);
 	last_phase = ahc_inb(ahc, LASTPHASE);
-	printk(">>>>>>>>>>>>>>>>>> Dump Card State Begins <<<<<<<<<<<<<<<<<\n"
+	printk(" // //>>>> Dump Card State Begins <<<<<<<<<<<<<<<<<\n"
 	       "%s: Dumping Card State %s, at SEQADDR 0x%x\n",
 	       ahc_name(ahc), ahc_lookup_phase_entry(last_phase)->phasemsg,
 	       ahc_inb(ahc, SEQADDR0) | (ahc_inb(ahc, SEQADDR1) << 8));
@@ -7340,7 +7340,7 @@ ahc_dump_card_state(struct ahc_softc *ahc)
 		printk("\n");
 	}
 
-	printk("\n<<<<<<<<<<<<<<<<< Dump Card State Ends >>>>>>>>>>>>>>>>>>\n");
+	printk("\n<<<<<<<<<<<<<<<<< Dump Card State Ends  // //>>>>\n");
 	ahc_outb(ahc, SCBPTR, saved_scbptr);
 	if (paused == 0)
 		ahc_unpause(ahc);

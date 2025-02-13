@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-only
-<<<<<<< HEAD
+ 
 /* Copyright (c) 2019-2020, The Linux Foundation. All rights reserved. */
 =======
 /* Copyright (c) 2019-2021, The Linux Foundation. All rights reserved. */
 /* Copyright (c) 2021, Qualcomm Innovation Center, Inc. All rights reserved. */
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 #define pr_fmt(fmt) "PM8008: %s: " fmt, __func__
 
@@ -101,11 +101,11 @@ struct pm8008_regulator {
 	int			min_dropout_uv;
 	int			step_rate;
 	bool			enable_ocp_broadcast;
-<<<<<<< HEAD
+ 
 =======
 	enum pmic_subtype       pmic_subtype;
 	struct work_struct	notify_clients_work;
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 };
 
 static struct regulator_data reg_data[] = {
@@ -565,7 +565,7 @@ error:
 	return NOTIFY_OK;
 }
 
-<<<<<<< HEAD
+ 
 =======
 static void notify_clients_work(struct work_struct *work)
 {
@@ -598,7 +598,7 @@ static int pm8008_regulator_register_init(struct pm8008_regulator *pm8008_reg,
 	return 0;
 }
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 static int pm8008_register_ldo(struct pm8008_regulator *pm8008_reg,
 						const char *name)
 {

@@ -1315,7 +1315,7 @@ static int spi_geni_transfer_one(struct spi_master *spi,
 		return -EINVAL;
 	}
 
-<<<<<<< HEAD
+ 
 =======
 	if (mas->use_fixed_timeout)
 		xfer_timeout = msecs_to_jiffies(SPI_XFER_TIMEOUT_MS);
@@ -1337,7 +1337,7 @@ static int spi_geni_transfer_one(struct spi_master *spi,
 		return -EACCES;
 	}
 
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	if (mas->cur_xfer_mode != GSI_DMA) {
 		reinit_completion(&mas->xfer_done);
 		ret = setup_fifo_xfer(xfer, mas, slv->mode, spi);

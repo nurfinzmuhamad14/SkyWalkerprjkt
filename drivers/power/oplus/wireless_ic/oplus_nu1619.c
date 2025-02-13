@@ -3923,7 +3923,7 @@ static void nu1619_idt_connect_int_func(struct work_struct *work)
 
 
 	if (nu1619_get_idt_con_val() == 1) {
-		chg_err(" !!!!! <~WPC~>[-TEST-] wpc dock has connected!>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+		chg_err(" !!!!! <~WPC~>[-TEST-] wpc dock has connected! // // // //\n");
 		if (nu1619_chip->nu1619_chg_status.charge_online == false) {
 			nu1619_chip->nu1619_chg_status.charge_online = true;
 			chip->wireless_mode = WIRELESS_MODE_RX;

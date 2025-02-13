@@ -44,10 +44,10 @@ enum ipa_fltrt_equations {
 #define IPA3_0_HW_TBL_ADDR_MASK (127)
 #define IPA3_0_HW_RULE_BUF_SIZE (256)
 #define IPA3_0_HW_RULE_START_ALIGNMENT (7)
-<<<<<<< HEAD
+ 
 =======
 #define IPA3_0_HW_RULE_PREFETCH_BUF_SIZE (256)
->>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
+ // 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 
 /*

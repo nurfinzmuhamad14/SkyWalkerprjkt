@@ -1,4 +1,4 @@
->>>>>>>>>> The TCM v4 fabric module script generator <<<<<<<<<<
+ //>>> The TCM v4 fabric module script generator <<<<<<<<<<
 
 Greetings all,
 
