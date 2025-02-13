@@ -306,10 +306,17 @@ struct tty_struct {
 	struct termiox *termiox;	/* May be NULL for unsupported */
 	char name[64];
 	struct pid *pgrp;		/* Protected by ctrl lock */
+<<<<<<< HEAD
     /*
      * Writes protected by both ctrl lock and legacy mutex, readers must use
      * at least one of them.
      */
+=======
+	/*
+	 * Writes protected by both ctrl lock and legacy mutex, readers must use
+	 * at least one of them.
+	 */
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	struct pid *session;
 	unsigned long flags;
 	int count;

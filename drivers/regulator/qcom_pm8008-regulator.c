@@ -1,5 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-only
+<<<<<<< HEAD
 /* Copyright (c) 2019-2020, The Linux Foundation. All rights reserved. */
+=======
+/* Copyright (c) 2019-2021, The Linux Foundation. All rights reserved. */
+/* Copyright (c) 2021, Qualcomm Innovation Center, Inc. All rights reserved. */
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 #define pr_fmt(fmt) "PM8008: %s: " fmt, __func__
 
@@ -96,6 +101,11 @@ struct pm8008_regulator {
 	int			min_dropout_uv;
 	int			step_rate;
 	bool			enable_ocp_broadcast;
+<<<<<<< HEAD
+=======
+	enum pmic_subtype       pmic_subtype;
+	struct work_struct	notify_clients_work;
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 };
 
 static struct regulator_data reg_data[] = {
@@ -549,16 +559,46 @@ static int pm8008_ldo_cb(struct notifier_block *nb, ulong event, void *data)
 		goto error;
 	}
 
-	/* Notify the consumers about the OCP event */
-	mutex_lock(&pm8008_reg->rdev->mutex);
-	regulator_notifier_call_chain(pm8008_reg->rdev,
-				REGULATOR_EVENT_OVER_CURRENT, NULL);
-	mutex_unlock(&pm8008_reg->rdev->mutex);
+	schedule_work(&pm8008_reg->notify_clients_work);
 
 error:
 	return NOTIFY_OK;
 }
 
+<<<<<<< HEAD
+=======
+static void notify_clients_work(struct work_struct *work)
+{
+	struct pm8008_regulator *pm8008_reg = container_of(work,
+			struct pm8008_regulator, notify_clients_work);
+
+	/* Notify the consumers about the OCP event */
+	mutex_lock(&pm8008_reg->rdev->mutex);
+	regulator_notifier_call_chain(pm8008_reg->rdev,
+				REGULATOR_EVENT_OVER_CURRENT, NULL);
+	mutex_unlock(&pm8008_reg->rdev->mutex);
+}
+
+static int pm8008_regulator_register_init(struct pm8008_regulator *pm8008_reg,
+			const struct regulator_data *reg_data)
+{
+	int i, rc;
+
+	if (!reg_data->reg_init)
+		return 0;
+
+	for (i = 0; i < reg_data->reg_init_size; i++) {
+		rc = pm8008_write(pm8008_reg->regmap,
+			pm8008_reg->base + reg_data->reg_init[i].offset,
+			&reg_data->reg_init[i].data, 1);
+		if (rc < 0)
+			return rc;
+	}
+
+	return 0;
+}
+
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 static int pm8008_register_ldo(struct pm8008_regulator *pm8008_reg,
 						const char *name)
 {
@@ -706,6 +746,8 @@ static int pm8008_register_ldo(struct pm8008_regulator *pm8008_reg,
 				rc);
 			return rc;
 		}
+		INIT_WORK(&pm8008_reg->notify_clients_work,
+				notify_clients_work);
 	}
 
 	pr_debug("%s regulator registered\n", name);

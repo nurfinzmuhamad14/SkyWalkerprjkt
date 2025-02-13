@@ -1,5 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-only
+<<<<<<< HEAD
 /* Copyright (c) 2016, 2019-2020 The Linux Foundation. All rights reserved. */
+=======
+/* Copyright (c) 2016, 2019-2021 The Linux Foundation. All rights reserved. */
+/* Copyright (c) 2023, Qualcomm Innovation Center, Inc. All rights reserved. */
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 
 #include <linux/clk.h>
 #include <linux/export.h>
@@ -11,6 +16,10 @@
 #include <linux/bitops.h>
 #include <linux/mfd/syscon.h>
 #include <linux/msm-bus.h>
+#include <trace/events/power.h>
+
+#define CREATE_TRACE_POINTS
+#include "trace.h"
 
 #include "clk-regmap.h"
 #include "clk-debug.h"
@@ -272,6 +281,8 @@ static int clk_debug_measure_get(void *data, u64 *val)
 
 	/* recursively calculate actual freq */
 	*val *= get_mux_divs(measure);
+	/* enable ftrace support */
+	trace_clk_measure(clk_hw_get_name(hw), *val);
 	disable_debug_clks(measure);
 exit:
 	if (meas->bus_cl_id)

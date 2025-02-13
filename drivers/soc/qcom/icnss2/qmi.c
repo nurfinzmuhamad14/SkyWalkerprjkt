@@ -1,6 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
+<<<<<<< HEAD
  * Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 #define pr_fmt(fmt) "icnss2_qmi: " fmt
@@ -881,6 +886,241 @@ err_req_fw:
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
+int icnss_wlfw_qdss_data_send_sync(struct icnss_priv *priv, char *file_name,
+				   u32 total_size)
+{
+	int ret = 0;
+	struct wlfw_qdss_trace_data_req_msg_v01 *req;
+	struct wlfw_qdss_trace_data_resp_msg_v01 *resp;
+	unsigned char *p_qdss_trace_data_temp, *p_qdss_trace_data = NULL;
+	unsigned int remaining;
+	struct qmi_txn txn;
+
+	icnss_pr_dbg("%s", __func__);
+
+	req = kzalloc(sizeof(*req), GFP_KERNEL);
+	if (!req)
+		return -ENOMEM;
+
+	resp = kzalloc(sizeof(*resp), GFP_KERNEL);
+	if (!resp) {
+		kfree(req);
+		return -ENOMEM;
+	}
+
+	p_qdss_trace_data = kzalloc(total_size, GFP_KERNEL);
+	if (p_qdss_trace_data == NULL) {
+		ret = ENOMEM;
+		goto end;
+	}
+
+	remaining = total_size;
+	p_qdss_trace_data_temp = p_qdss_trace_data;
+	while (remaining && resp->end == 0) {
+
+		ret = qmi_txn_init(&priv->qmi, &txn,
+				   wlfw_qdss_trace_data_resp_msg_v01_ei, resp);
+
+		if (ret < 0) {
+			icnss_pr_err("Fail to init txn for QDSS trace resp %d\n",
+				     ret);
+			goto fail;
+		}
+
+		ret = qmi_send_request
+			(&priv->qmi, NULL, &txn,
+			 QMI_WLFW_QDSS_TRACE_DATA_REQ_V01,
+			 WLFW_QDSS_TRACE_DATA_REQ_MSG_V01_MAX_MSG_LEN,
+			 wlfw_qdss_trace_data_req_msg_v01_ei, req);
+
+		if (ret < 0) {
+			qmi_txn_cancel(&txn);
+			icnss_pr_err("Fail to send QDSS trace data req %d\n",
+				     ret);
+			goto fail;
+		}
+
+		ret = qmi_txn_wait(&txn, priv->ctrl_params.qmi_timeout);
+
+		if (ret < 0) {
+			icnss_pr_err("QDSS trace resp wait failed with rc %d\n",
+				     ret);
+			goto fail;
+		} else if (resp->resp.result != QMI_RESULT_SUCCESS_V01) {
+			icnss_pr_err("QMI QDSS trace request rejected, result:%d error:%d\n",
+				     resp->resp.result, resp->resp.error);
+				     ret = -resp->resp.result;
+			goto fail;
+		} else {
+			ret = 0;
+		}
+
+		icnss_pr_dbg("%s: response total size  %d data len %d",
+			     __func__, resp->total_size, resp->data_len);
+
+		if ((resp->total_size_valid == 1 &&
+		     resp->total_size == total_size)
+		    && (resp->seg_id_valid == 1 && resp->seg_id == req->seg_id)
+		    && (resp->data_valid == 1 &&
+			resp->data_len <= QMI_WLFW_MAX_DATA_SIZE_V01)
+		    && resp->data_len <= remaining) {
+			memcpy(p_qdss_trace_data_temp,
+			       resp->data, resp->data_len);
+		} else {
+			icnss_pr_err("%s: Unmatched qdss trace data, Expect total_size %u, seg_id %u, Recv total_size_valid %u, total_size %u, seg_id_valid %u, seg_id %u, data_len_valid %u, data_len %u",
+				     __func__,
+				     total_size, req->seg_id,
+				     resp->total_size_valid,
+				     resp->total_size,
+				     resp->seg_id_valid,
+				     resp->seg_id,
+				     resp->data_valid,
+				     resp->data_len);
+			ret = -EINVAL;
+			goto fail;
+		}
+
+		remaining -= resp->data_len;
+		p_qdss_trace_data_temp += resp->data_len;
+		req->seg_id++;
+	}
+
+	if (remaining == 0 && (resp->end_valid && resp->end)) {
+		ret = icnss_genl_send_msg(p_qdss_trace_data,
+					 ICNSS_GENL_MSG_TYPE_QDSS, file_name,
+					 total_size);
+		if (ret < 0) {
+			icnss_pr_err("Fail to save QDSS trace data: %d\n",
+				     ret);
+		ret = -EINVAL;
+		}
+	} else {
+		icnss_pr_err("%s: QDSS trace file corrupted: remaining %u, end_valid %u, end %u",
+			     __func__,
+			     remaining, resp->end_valid, resp->end);
+		ret = -EINVAL;
+	}
+
+fail:
+	kfree(p_qdss_trace_data);
+
+end:
+	kfree(req);
+	kfree(resp);
+	return ret;
+}
+
+int icnss_wlfw_qdss_dnld_send_sync(struct icnss_priv *priv)
+{
+	struct wlfw_qdss_trace_config_download_req_msg_v01 *req;
+	struct wlfw_qdss_trace_config_download_resp_msg_v01 *resp;
+	struct qmi_txn txn;
+	const struct firmware *fw_entry = NULL;
+	const u8 *temp;
+	unsigned int remaining;
+	int ret = 0;
+
+	icnss_pr_dbg("Sending QDSS config download message, state: 0x%lx\n",
+		     priv->state);
+
+	req = kzalloc(sizeof(*req), GFP_KERNEL);
+	if (!req)
+		return -ENOMEM;
+
+	resp = kzalloc(sizeof(*resp), GFP_KERNEL);
+	if (!resp) {
+		kfree(req);
+		return -ENOMEM;
+	}
+
+	ret = request_firmware(&fw_entry, QDSS_TRACE_CONFIG_FILE,
+			       &priv->pdev->dev);
+	if (ret) {
+		icnss_pr_err("Failed to load QDSS: %s\n",
+			     QDSS_TRACE_CONFIG_FILE);
+		goto err_req_fw;
+	}
+
+	temp = fw_entry->data;
+	remaining = fw_entry->size;
+
+	icnss_pr_dbg("Downloading QDSS: %s, size: %u\n",
+		     QDSS_TRACE_CONFIG_FILE, remaining);
+
+	while (remaining) {
+		req->total_size_valid = 1;
+		req->total_size = remaining;
+		req->seg_id_valid = 1;
+		req->data_valid = 1;
+		req->end_valid = 1;
+
+		if (remaining > QMI_WLFW_MAX_DATA_SIZE_V01) {
+			req->data_len = QMI_WLFW_MAX_DATA_SIZE_V01;
+		} else {
+			req->data_len = remaining;
+			req->end = 1;
+		}
+
+		memcpy(req->data, temp, req->data_len);
+
+		ret = qmi_txn_init
+			(&priv->qmi, &txn,
+			 wlfw_qdss_trace_config_download_resp_msg_v01_ei,
+			 resp);
+		if (ret < 0) {
+			icnss_pr_err("Failed to initialize txn for QDSS download request, err: %d\n",
+				      ret);
+			goto err_send;
+		}
+
+		ret = qmi_send_request
+		      (&priv->qmi, NULL, &txn,
+		       QMI_WLFW_QDSS_TRACE_CONFIG_DOWNLOAD_REQ_V01,
+		       WLFW_QDSS_TRACE_CONFIG_DOWNLOAD_REQ_MSG_V01_MAX_MSG_LEN,
+		       wlfw_qdss_trace_config_download_req_msg_v01_ei, req);
+		if (ret < 0) {
+			qmi_txn_cancel(&txn);
+			icnss_pr_err("Failed to send respond QDSS download request, err: %d\n",
+				      ret);
+			goto err_send;
+		}
+
+		ret = qmi_txn_wait(&txn, priv->ctrl_params.qmi_timeout);
+		if (ret < 0) {
+			icnss_pr_err("Failed to wait for response of QDSS download request, err: %d\n",
+				      ret);
+			goto err_send;
+		}
+
+		if (resp->resp.result != QMI_RESULT_SUCCESS_V01) {
+			icnss_pr_err("QDSS download request failed, result: %d, err: %d\n",
+				      resp->resp.result, resp->resp.error);
+			ret = -resp->resp.result;
+			goto err_send;
+		}
+
+		remaining -= req->data_len;
+		temp += req->data_len;
+		req->seg_id++;
+	}
+
+	release_firmware(fw_entry);
+	kfree(req);
+	kfree(resp);
+	return 0;
+
+err_send:
+	release_firmware(fw_entry);
+err_req_fw:
+
+	kfree(req);
+	kfree(resp);
+	return ret;
+}
+
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 int wlfw_wlan_mode_send_sync_msg(struct icnss_priv *priv,
 		enum wlfw_driver_mode_enum_v01 mode)
 {

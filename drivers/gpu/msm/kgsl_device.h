@@ -1,6 +1,11 @@
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
+<<<<<<< HEAD
  * Copyright (c) 2002,2007-2020, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2002,2007-2021, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 #ifndef __KGSL_DEVICE_H
 #define __KGSL_DEVICE_H

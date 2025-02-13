@@ -1,6 +1,10 @@
 /* SPDX-License-Identifier: GPL-2.0-only */
 /*
+<<<<<<< HEAD
  * Copyright (c) 2017-2019, The Linux Foundation. All rights reserved.
+=======
+ * Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
  */
 
 #ifndef _QDSS_BRIDGE_H
@@ -11,6 +15,7 @@ struct qdss_buf_tbl_lst {
 	unsigned char *buf;
 	struct qdss_request *usb_req;
 	atomic_t available;
+	atomic_t used;
 };
 
 struct qdss_mhi_buf_tbl_t {

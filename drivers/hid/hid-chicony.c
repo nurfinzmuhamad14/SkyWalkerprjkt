@@ -67,7 +67,10 @@ static __u8 *ch_switch12_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 		return rdesc;
 
 	intf = to_usb_interface(hdev->dev.parent);
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 5c0ebb9ca269d519e9bc3d26dbc83eaf957a3d4d
 	if (intf->cur_altsetting->desc.bInterfaceNumber == 1) {
 		/* Change usage maximum and logical maximum from 0x7fff to
 		 * 0x2fff, so they don't exceed HID_MAX_USAGES */
