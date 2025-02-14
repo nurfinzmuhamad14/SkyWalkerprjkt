@@ -114,5 +114,14 @@ obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX) += synaptics_dsx/
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_TCM)	+= synaptics_tcm/
 obj-$(CONFIG_TOUCHSCREEN_FTS)	+= focaltech_touch/
 obj-$(CONFIG_TOUCHSCREEN_NT36XXX)	+= nt36xxx/
+<<<<<<< HEAD
 obj-$(CONFIG_TOUCHPANEL_OPPO) += oppo_touchscreen/
 obj-$(CONFIG_TOUCHPANEL_OPPO) += touch.o
+||||||| 6cb02c4041e9
+=======
+obj-$(CONFIG_TOUCHSCREEN_NT36672A)	+= NT36672A/
+obj-$(CONFIG_TOUCHSCREEN_FT8719)	+= FT8719/
+obj-$(CONFIG_VITURALSAR)		+= vituralsar_driver.o
+obj-$(CONFIG_TOUCHSCREEN_XIAOMI_TOUCHFEATURE)	+=  xiaomi/
+obj-$(CONFIG_TOUCHSCREEN_COMMON)	+= tp_common.o
+>>>>>>> 376c5b0ed01c6266b37c7a7d85ddcef93845fd28

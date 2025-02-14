@@ -1355,6 +1355,50 @@ source "drivers/input/touchscreen/focaltech_touch/Kconfig"
 
 source "drivers/input/touchscreen/nt36xxx/Kconfig"
 
+<<<<<<< HEAD
 source "drivers/input/touchscreen/oppo_touchscreen/Kconfig"
 
+||||||| 6cb02c4041e9
+=======
+config TOUCHSCREEN_NT36672A
+	bool "NT36672A Touchscreen"
+	default n
+	help
+	  Say Y here if you have NT36672A Touchscreen.
+
+	  If unsure, say N.
+
+config VITURALSAR
+	bool "Vitural Sar series"
+	depends on I2C
+	help
+	 Say Y here if you have a Goodix GT9xx touchscreen.
+	 Gt9xx controllers are multi touch controllers which can
+	 report 5 touches at a time.
+
+	 If unsure, say N.
+
+source "drivers/input/touchscreen/NT36672A/Kconfig"
+
+config TOUCHSCREEN_FT8719
+	bool "FT8719 Touchscreen"
+	default n
+	help
+	  Say Y here if you have FT8719 Touchscreen.
+
+	  If unsure, say N.
+
+source "drivers/input/touchscreen/FT8719/Kconfig"
+source "drivers/input/touchscreen/xiaomi/Kconfig"
+
+config TOUCHSCREEN_COMMON
+	bool "Common touchscreen interface to interact with userspace"
+	default y
+	help
+	  Say Y here if you want to control touchpanel features via
+	  /sys/touchpanel.
+
+	  If unsure, say N.
+
+>>>>>>> 376c5b0ed01c6266b37c7a7d85ddcef93845fd28
 endif

@@ -11,6 +11,8 @@ obj-$(CONFIG_BLOCK) := bio.o elevator.o blk-core.o blk-tag.o blk-sysfs.o \
 			genhd.o partition-generic.o ioprio.o \
 			badblocks.o partitions/ blk-rq-qos.o
 
+CFLAGS_blk-mq.o := $(call cc-disable-warning, align-mismatch)
+
 obj-$(CONFIG_BOUNCE)		+= bounce.o
 obj-$(CONFIG_BLK_SCSI_REQUEST)	+= scsi_ioctl.o
 obj-$(CONFIG_BLK_DEV_BSG)	+= bsg.o
@@ -39,7 +41,13 @@ obj-$(CONFIG_BLK_DEBUG_FS_ZONED)+= blk-mq-debugfs-zoned.o
 obj-$(CONFIG_BLK_SED_OPAL)	+= sed-opal.o
 obj-$(CONFIG_BLK_INLINE_ENCRYPTION)	+= keyslot-manager.o bio-crypt-ctx.o \
 					   blk-crypto.o
+<<<<<<< HEAD
 obj-$(CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK)	+= blk-crypto-fallback.o
 #ifdef OPLUS_FEATURE_UIFIRST
 obj-$(CONFIG_OPLUS_FEATURE_UXIO_FIRST)	+= uxio_first/
 #endif /*OPLUS_FEATURE_UIFIRST*/
+||||||| 6cb02c4041e9
+obj-$(CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK)	+= blk-crypto-fallback.o
+=======
+obj-$(CONFIG_BLK_INLINE_ENCRYPTION_FALLBACK)	+= blk-crypto-fallback.o
+>>>>>>> 376c5b0ed01c6266b37c7a7d85ddcef93845fd28

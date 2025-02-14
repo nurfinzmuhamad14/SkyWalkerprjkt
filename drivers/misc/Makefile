@@ -68,6 +68,10 @@ obj-$(CONFIG_QPNP_MISC)		+= qpnp-misc.o
 obj-$(CONFIG_OKL4_USER_VIRQ)	+= okl4-virq.o
 obj-$(CONFIG_OKL4_RINGBUF)	+= okl4-ringbuf.o
 obj-$(CONFIG_TEST_IRQ_REQUESTER) += irq_requester.o
+obj-$(CONFIG_SIMTRAY_STATUS)    += simtray.o
+obj-$(CONFIG_DPDT_STATUS)    += dpdt.o
+obj-$(CONFIG_MI_FS)             +=xiaomi_fs/
+obj-$(CONFIG_HQ_SYSFS_SUPPORT) 	+= hqsysfs/
 
 #ifdef OPLUS_FEATURE_TP_BASIC
 obj-$(CONFIG_SIM_DETECT)	+= sim_detect.o
@@ -84,7 +88,14 @@ obj-$(CONFIG_WIGIG_SENSING_SPI)	+= wigig_sensing.o
 obj-$(CONFIG_QTI_MAXIM_FAN_CONTROLLER) += max31760.o
 obj-$(CONFIG_QTI_XR_SMRTVWR_MISC) += qxr-stdalonevwr.o
 obj-$(CONFIG_FPR_FPC)		+= fpr_FingerprintCard/
+<<<<<<< HEAD
 
 #ifdef VENDOR_EDIT
 obj-$(CONFIG_OPLUS_RF_CABLE_MONITOR)	+= oplus_rf_cable_monitor.o
 #endif
+||||||| 6cb02c4041e9
+=======
+obj-y 	+= goodix/
+obj-y 	+= focaltech/
+obj-y   += cdfingerfp/
+>>>>>>> 376c5b0ed01c6266b37c7a7d85ddcef93845fd28
